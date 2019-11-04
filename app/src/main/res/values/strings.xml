@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MeetingApp</string>
+    <string name="button_start">Start</string>
+    <string name="time">time</string>
+    <string name="button_stop">Stop</string>
+    <string name="settingsString">Hinta palaverille on laskettu tuntipalkasta kertomalla ajalla. Työntekijän tunnit on laskettu jakamalla palaverin hinta 4.15 joka on yksityissektorin työntekijän mediaani verokertymä tunnissa.</string>
+</resources>
