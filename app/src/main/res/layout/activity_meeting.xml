@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:background="@color/colorBlack"
+    android:orientation="vertical"
     tools:context=".MeetingActivity">
 
     <LinearLayout
@@ -16,27 +16,62 @@
         <Chronometer
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="30sp"
             android:id="@+id/chronometer"
             android:textColor="@color/colorWhite"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewTime"
             android:textSize="40sp"
             android:textColor="@color/colorWhite"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewValue"
             android:textSize="40sp"
             android:textColor="@color/colorWhite"/>
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="stop"
+            android:id="@+id/textViewComparision"
             android:textSize="40sp"
-            android:id="@+id/buttonClick"/>
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:layout_marginLeft="4dp"
+
+            android:id="@+id/endMeeting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight = "1"
+            android:textColor="@color/euroColor"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:text="@string/button_stop"
+            android:background="@drawable/list_item_background"/>
+
+        <Button
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/button_pause"
+            android:textColor="@color/euroColor"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:id="@+id/buttonClick"
+            android:background="@drawable/list_item_background"/>
+    </LinearLayout>
+
+</FrameLayout>

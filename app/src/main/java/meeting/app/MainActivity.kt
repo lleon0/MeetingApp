@@ -83,9 +83,9 @@ class MainActivity : AppCompatActivity() {
             val clickedId = (view.findViewById(R.id.text1) as TextView).text.toString()
 
             val adb = AlertDialog.Builder(this)
-            adb.setMessage("Delete selected item?")
+            adb.setMessage("Haluatko poistaa valitun palaverin?")
             adb.setCancelable(false)
-            adb.setNegativeButton("Cancel", null)
+            adb.setNegativeButton("Ei", null)
             adb.setPositiveButton("Kyllä"){_,_ ->
                 deleteData(clickedId)
                 dataList.removeAt(position)
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                     data.put(summary, res.getString(2))
 
                     dataList.add(data)
-                    title = "Saved meeting data"
+                    title = "Tallennettu data"
                 }
             }
         }catch (e: Exception) {

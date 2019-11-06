@@ -1,12 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/euroColor"
+    android:paddingBottom="2dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+
+        android:layout_alignParentTop="true"
+        android:background="@android:color/black"
+        android:textColor="@color/euroColor"
+        android:id="@+id/title"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="huomenta"
+
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+
+        android:id="@+id/summaryNoteView"
+        android:layout_below="@+id/title"
+        android:hint="@string/summaryEditTextHint"
+        android:textColorHint="@color/euroColor"
+        android:background="@drawable/custom_edittext"
+        android:textColor="@color/colorWhite"
+        android:inputType="textCapSentences"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+
+        android:text=""
+        android:layout_below="@+id/summaryNoteView"
+        android:layout_above="@+id/button"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/black"
         android:id="@+id/dialogTextView"/>
 
-</LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
+
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="2dp"
+
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/euroColor"
+        android:background="@color/colorBlack"
+        android:text="@string/saveMeetingData"/>
+</RelativeLayout>

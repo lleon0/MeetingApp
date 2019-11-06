@@ -2,9 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+
     android:paddingTop="2dp"
     android:paddingBottom="2dp"
-    android:orientation="vertical">
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+
+    android:orientation="vertical"
+    android:background="@drawable/list_item_background">
     <TextView
         android:id="@+id/text1"
         android:layout_width="fill_parent"

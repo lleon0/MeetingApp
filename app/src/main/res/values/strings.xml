@@ -1,7 +1,16 @@
 <resources>
-    <string name="app_name">MeetingApp</string>
-    <string name="button_start">Start</string>
+    <string name="app_name">Palav€ri</string>
+    <string name="button_start">Aloita</string>
     <string name="time">time</string>
-    <string name="button_stop">Stop</string>
-    <string name="settingsString">Hinta palaverille on laskettu tuntipalkasta kertomalla ajalla. Työntekijän tunnit on laskettu jakamalla palaverin hinta 4.15 joka on yksityissektorin työntekijän mediaani verokertymä tunnissa.</string>
+    <string name="button_pause">Pysäytä</string>
+    <string name="button_stop">Lopeta</string>
+    <string name="button_show_data">Näytä data</string>
+    <string name="button_continue">Jatka</string>
+    <string name="settingsString">Hinta palaverille on laskettu tuntipalkasta kertomalla ajalla.\nTyöntekijän tunnit on laskettu jakamalla palaverin hinta 4.15 joka on yksityissektorin työntekijän mediaani verokertymä tunnissa.</string>
+    <string name="meetingSummary">Palaverin yhteenveto</string>
+    <string name="closeData">Sulje</string>
+    <string name="saveMeetingData">Tallenna palaveri</string>
+    <string name="numberOfParticipants">Osallistujien määrä</string>
+    <string name="participantsAverageSalary">Osallistujien keskipalkka</string>
+    <string name="summaryEditTextHint">Mitä palaverilla saavutettiin?</string>
 </resources>

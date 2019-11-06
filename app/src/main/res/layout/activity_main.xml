@@ -18,7 +18,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/numberOfPersonsView"
             android:inputType="number"
-            android:backgroundTint="@android:color/holo_red_light"
+            android:backgroundTint="@color/euroColor"
+            android:hint="@string/numberOfParticipants"
+            android:textColorHint="@color/euroColor"
             android:textColor="@color/colorWhite"/>
 
         <EditText
@@ -26,20 +28,37 @@
             android:layout_height="wrap_content"
             android:id="@+id/salaryView"
             android:inputType="number"
-            android:backgroundTint="@android:color/holo_red_light"
+            android:backgroundTint="@color/euroColor"
+            android:hint="@string/participantsAverageSalary"
+            android:textColorHint="@color/euroColor"
             android:textColor="@color/colorWhite"/>
 
         <Button
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_start"
-            android:id="@+id/startButton"/>
+            android:textColor="@color/euroColor"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:id="@+id/startButton"
+            android:background="@drawable/list_item_background"/>
 
         <Button
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Data"
-            android:id="@+id/showDataButton"/>
+            android:text="@string/button_show_data"
+            android:textColor="@color/euroColor"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:id="@+id/showDataButton"
+            android:background="@drawable/list_item_background"/>
 
     </LinearLayout>
 

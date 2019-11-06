@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/euroColor"
+    android:paddingBottom="2dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="35sp"
@@ -16,7 +18,7 @@
 
         android:layout_alignParentTop="true"
         android:background="@android:color/black"
-        android:textColor="#FF7F27"
+        android:textColor="@color/euroColor"
         android:id="@+id/title"
         android:textSize="25sp"
         android:textStyle="bold"/>
@@ -41,8 +43,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
+
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="2dp"
+
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:textColor="@color/colorBlack"
-        android:text="Close"/>
+        android:textColor="@color/euroColor"
+        android:background="@color/colorBlack"
+        android:text="@string/closeData"/>
 </RelativeLayout>

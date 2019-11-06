@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
-import android.widget.Chronometer
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_meeting.*
 import java.util.*
 import kotlin.concurrent.timer
@@ -21,7 +19,8 @@ import android.view.Menu
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.MenuItem
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -58,7 +57,10 @@ class MeetingActivity : AppCompatActivity() {
         buttonClick.setOnClickListener{
             startStop()
         }
-        buttonClick.setOnLongClickListener{
+        endMeeting.setOnClickListener {
+            showToast()
+        }
+        endMeeting.setOnLongClickListener{
             longClick()
             true
         }
@@ -87,15 +89,21 @@ class MeetingActivity : AppCompatActivity() {
         if (isTimerRunning){
             isTimerRunning = false
             chronometer.stop()
-            buttonClick.text = getString(meeting.app.R.string.button_start)
+            buttonClick.text = getString(meeting.app.R.string.button_continue)
             pauseOffset = SystemClock.elapsedRealtime() - chronometer.base
+            endMeeting.visibility = View.VISIBLE
         }
         else{
             isTimerRunning = true
             chronometer.base = SystemClock.elapsedRealtime() - pauseOffset
             chronometer.start()
-            buttonClick.text = getString(meeting.app.R.string.button_stop)
+            buttonClick.text = getString(meeting.app.R.string.button_pause)
+            endMeeting.visibility = View.GONE
         }
+    }
+
+    private fun showToast(){
+        Toast.makeText(applicationContext, "Klikkaa pitkään lopettaaksesi palaveri", Toast.LENGTH_LONG).show()
     }
 
     private fun longClick(){
@@ -110,12 +118,18 @@ class MeetingActivity : AppCompatActivity() {
     private fun updateUi(){
         val time = SystemClock.elapsedRealtime() - chronometer.base
         meetingCost = (time.toDouble() / 3600000) * persons.toFloat() * salary.toFloat()
-        val costString = "Palaveri on maksanut: %.2f"  .format(meetingCost) + "€"
+        val costString = "Palaverin hinta: %.1f"  .format(meetingCost) + "€"
         textViewTime.text = costString
 
         costValue = meetingCost / 4.15
-        val costString2 = "Työntekijän tunnit että palaveri on maksettu: %.1f" .format(costValue)
+        val costString2 = "Työntekijän tunnit palaverin kustantamiseen: %.1f" .format(costValue)
         textViewValue.text = costString2
+
+        val comparisionValue = meetingCost / 2.76
+        if (comparisionValue > 1){
+            val costString3 = "Palaverin hinnalla saa noin: " + comparisionValue.toInt() + " oppilaan kouluruoan"
+            textViewComparision.text = costString3
+        }
     }
 
     private fun showSummary(time: String){
@@ -124,22 +138,41 @@ class MeetingActivity : AppCompatActivity() {
         val dialogView = inflater.inflate(meeting.app.R.layout.summary_view_dialog,null)
         dialogBuilder.setView(dialogView)
 
+        val textViewTitle = dialogView.findViewById<TextView>(meeting.app.R.id.title)
         val textView = dialogView.findViewById<TextView>(meeting.app.R.id.dialogTextView)
+        val button = dialogView.findViewById<Button>(meeting.app.R.id.button)
+        val editText = dialogView.findViewById<EditText>(meeting.app.R.id.summaryNoteView)
+
+
         val summaryString = "Palaverin kesto: " + time +
                 "\nPalaverin hinta: %.2f" .format(meetingCost) + "€" +
                 "\nTyötunnit palaverin kustannukseen: %.1f" .format(costValue) + "h"
         textView.text = summaryString
+        textViewTitle.text = getString(meeting.app.R.string.meetingSummary)
 
-        dialogBuilder.setTitle("Tallennetaanko palaverin tiedot")//"Tallennetaanko palaverin tiedot"
-        dialogBuilder.setPositiveButton("Kyllä"){dialog,_ ->
+        //dialogBuilder.setTitle("Tallennetaanko palaverin tiedot")//"Tallennetaanko palaverin tiedot"
+
+
+        /*dialogBuilder.setPositiveButton("Kyllä"){dialog,_ ->
             addData(currentDate, summaryString)
             dialog.dismiss()
         }
         dialogBuilder.setNegativeButton("Ei") {dialog,_ ->
             dialog.dismiss()
-        }
+        }*/
+
         val dialog = dialogBuilder.create()
         dialog.show()
+
+        button.setOnClickListener {
+            if (editText.text.isEmpty()){
+                Toast.makeText(applicationContext, "Täytä palaverin saavutus", Toast.LENGTH_LONG).show()
+            }else{
+                val stringToSave = summaryString + "\nPalaverin tulokset: " + editText.text.toString()
+                addData(currentDate, stringToSave)
+                dialog.dismiss()
+            }
+        }
     }
 
     private fun addData(date: String, summary: String){
